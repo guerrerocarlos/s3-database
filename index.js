@@ -186,9 +186,6 @@ module.exports = function (bucket, AWS) {
                 })
             }
 
-
-
-
             dbHandler.scan = (query) => {
                 let allFiles = []
                 let self = this
@@ -304,7 +301,6 @@ module.exports = function (bucket, AWS) {
                     }
                 }
             }
-
 
             dbHandler.getOne = async (value) => {
                 let result = await dbHandler.get(value)
