@@ -1,0 +1,110 @@
+[
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/s3-bucket-name.carlosguerrero.com/Account/clientId/clientOne/accountA.json",
+        "body": {
+            "id": "accountA",
+            "amount": "00001",
+            "type": "usd-savings",
+            "clientId": "clientOne"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "ct6Z9+kbi60DNsbWk0FN3/i9oTJapwkFO3i/ynVKB93m3zaGESZin02IxKj2kHu2ptf1KzDUwtk=",
+            "x-amz-request-id",
+            "26CBDB4DD7E1E68B",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:07 GMT",
+            "ETag",
+            "\"cb536bfa150b1ef333679c27a59a9cfa\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/s3-bucket-name.carlosguerrero.com/Account/id/accountA.json",
+        "body": {
+            "id": "accountA",
+            "amount": "00001",
+            "type": "usd-savings",
+            "clientId": "clientOne"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "6X/DvRU1wSxQkp6QH4EnTO0GLblSsgJDDP+B0fr71/i4V/qQp+nesLnUyk2kbzltDtewZKyfcp4=",
+            "x-amz-request-id",
+            "B3578FA22D5A9790",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:07 GMT",
+            "ETag",
+            "\"cb536bfa150b1ef333679c27a59a9cfa\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/s3-bucket-name.carlosguerrero.com/Account/clientId/clientOne/accountB.json",
+        "body": {
+            "id": "accountB",
+            "amount": "00002",
+            "type": "usd-savings",
+            "clientId": "clientOne"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "uRsYxNLHdeUL+4qmCrRJAiwTmVKZOCDBruKCR9sIQGV1czATLkur+tPRn/N+2SUTHEWqx8S6bco=",
+            "x-amz-request-id",
+            "8EC460D00C7D6AD5",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:07 GMT",
+            "ETag",
+            "\"4b7ffcacca03be9711b422650680e814\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/s3-bucket-name.carlosguerrero.com/Account/id/accountB.json",
+        "body": {
+            "id": "accountB",
+            "amount": "00002",
+            "type": "usd-savings",
+            "clientId": "clientOne"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "M9P3iZIB0iSTgCJK3Gw+qmhwAybYt4XBevsyp4AWaN1gt/Vyppel2T2aNEy0eES/NZqu2WDZEAc=",
+            "x-amz-request-id",
+            "4968A3E74DE5E7FB",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:07 GMT",
+            "ETag",
+            "\"4b7ffcacca03be9711b422650680e814\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]

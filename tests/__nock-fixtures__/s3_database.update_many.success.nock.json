@@ -1,0 +1,200 @@
+[
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "GET",
+        "path": "/s3-bucket-name.carlosguerrero.com?list-type=2&prefix=Account%2FclientId%2FclientOne%2F",
+        "body": "",
+        "status": 200,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ListBucketResult xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\"><Name>s3-bucket-name.carlosguerrero.com</Name><Prefix>Account/clientId/clientOne/</Prefix><KeyCount>2</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>Account/clientId/clientOne/accountA.json</Key><LastModified>2019-01-02T18:10:07.000Z</LastModified><ETag>&quot;cb536bfa150b1ef333679c27a59a9cfa&quot;</ETag><Size>78</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>Account/clientId/clientOne/accountB.json</Key><LastModified>2019-01-02T18:10:07.000Z</LastModified><ETag>&quot;4b7ffcacca03be9711b422650680e814&quot;</ETag><Size>78</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "gFYwMz8UbC6Vx6L0eOs1l93nyqunQri/DN6F2ppY8Q7xlSaR7bHahYmtP3WtfdrQVRpIbl7Yy28=",
+            "x-amz-request-id",
+            "7978B5BA5F40E678",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:11 GMT",
+            "x-amz-bucket-region",
+            "us-east-1",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "GET",
+        "path": "/s3-bucket-name.carlosguerrero.com/Account/id/accountB.json",
+        "body": "",
+        "status": 200,
+        "response": {
+            "id": "accountB",
+            "amount": "00002",
+            "type": "usd-savings",
+            "clientId": "clientOne"
+        },
+        "rawHeaders": [
+            "x-amz-id-2",
+            "8rYbN0Q8LnfgblODYApNG+tY4IVi9ZI7ZaebQixW9RRWwoH1ax3q+dIdGH0bPA9FpJxTaqn8YoQ=",
+            "x-amz-request-id",
+            "4DD8B15976FB334D",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:11 GMT",
+            "Last-Modified",
+            "Wed, 02 Jan 2019 18:10:07 GMT",
+            "ETag",
+            "\"4b7ffcacca03be9711b422650680e814\"",
+            "Accept-Ranges",
+            "bytes",
+            "Content-Type",
+            "application/octet-stream",
+            "Content-Length",
+            "78",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "GET",
+        "path": "/s3-bucket-name.carlosguerrero.com/Account/id/accountA.json",
+        "body": "",
+        "status": 200,
+        "response": {
+            "id": "accountA",
+            "amount": "00001",
+            "type": "usd-savings",
+            "clientId": "clientOne"
+        },
+        "rawHeaders": [
+            "x-amz-id-2",
+            "2olgB4W4hux4jK/78YAN5O1s9BbhVl2tFnvDJjuHKsSLQL3/QCTClDyB+FXeRJ+O8VfUNo4MXdo=",
+            "x-amz-request-id",
+            "5E07A4546B465D96",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:11 GMT",
+            "Last-Modified",
+            "Wed, 02 Jan 2019 18:10:07 GMT",
+            "ETag",
+            "\"cb536bfa150b1ef333679c27a59a9cfa\"",
+            "Accept-Ranges",
+            "bytes",
+            "Content-Type",
+            "application/octet-stream",
+            "Content-Length",
+            "78",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/s3-bucket-name.carlosguerrero.com/Account/id/accountA.json",
+        "body": {
+            "id": "accountA",
+            "amount": "1000",
+            "type": "usd-savings",
+            "clientId": "clientOne"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "mFo284iApfFRdfkP3Ra2lebX37ZkGF58wa1t9TdHWLbs+iDrJKP386wpXAUVGjqmJKobOeRVies=",
+            "x-amz-request-id",
+            "AC3D176DDD2C825C",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:12 GMT",
+            "ETag",
+            "\"2d8b3e1dcb5f263d2f43f5222dcad0fc\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/s3-bucket-name.carlosguerrero.com/Account/clientId/clientOne/accountA.json",
+        "body": {
+            "id": "accountA",
+            "amount": "1000",
+            "type": "usd-savings",
+            "clientId": "clientOne"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "VfutM7zp704/RpAwhBl5LP56vCCiylH6y9c7ejwj01rcptgd9KgAPVIPjyIKWK+n/AbYUH8bIhY=",
+            "x-amz-request-id",
+            "7AB2458AAD6AB1E3",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:12 GMT",
+            "ETag",
+            "\"2d8b3e1dcb5f263d2f43f5222dcad0fc\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/s3-bucket-name.carlosguerrero.com/Account/clientId/clientOne/accountB.json",
+        "body": {
+            "id": "accountB",
+            "amount": "1000",
+            "type": "usd-savings",
+            "clientId": "clientOne"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "zjF511F/3UWnLnNvgaDAtHU5LpBw5GIJHNWtHghahv9KilvIHjbp4U192+XyY+Jlg+QeQjPRlAw=",
+            "x-amz-request-id",
+            "7D1B9E1583B5C590",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:12 GMT",
+            "ETag",
+            "\"8a17fcf5c59d91932999f8f9ee6f8e62\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/s3-bucket-name.carlosguerrero.com/Account/id/accountB.json",
+        "body": {
+            "id": "accountB",
+            "amount": "1000",
+            "type": "usd-savings",
+            "clientId": "clientOne"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "G6zZP4kBChG+CkVVBOzCsDYwC9Smy7/PcUwlq7fVQe6alhfOX5xclusHJqF4IPc1xIXOXpCz+p0=",
+            "x-amz-request-id",
+            "BC059384F2FE258F",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:12 GMT",
+            "ETag",
+            "\"8a17fcf5c59d91932999f8f9ee6f8e62\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]

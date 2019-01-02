@@ -1,0 +1,54 @@
+[
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/s3-bucket-name.carlosguerrero.com/Client/id/clientOne.json",
+        "body": {
+            "id": "clientOne",
+            "name": "Carlos Guerrero",
+            "username": "guerrerocarlos"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "7R8+s0c7V9CO3k7mYOMKYGRXIJQlkFnypyy4O21SR9uOApp5TAWRzIQczz0X7TWT6IGmlBLUzVs=",
+            "x-amz-request-id",
+            "FEA9FEBB62BF3E58",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:06 GMT",
+            "ETag",
+            "\"dbb901da38ba2229473ede5700f4f3d8\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/s3-bucket-name.carlosguerrero.com/Client/id/clientTwo.json",
+        "body": {
+            "id": "clientTwo",
+            "name": "",
+            "username": ""
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "5DXKQAMfJuSQ5C9ktOhnp9RZLtL0PaNwxvscxX7NixEeqD5PDd64pXr7zkR8j+PeFArnqWHxNAg=",
+            "x-amz-request-id",
+            "0A3289780E48F72F",
+            "Date",
+            "Wed, 02 Jan 2019 18:10:06 GMT",
+            "ETag",
+            "\"f6431eedea7645c0829a22c2a094927b\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]
