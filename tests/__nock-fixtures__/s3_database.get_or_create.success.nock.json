@@ -1,0 +1,50 @@
+[
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "GET",
+        "path": "/s3-bucket-name.carlosguerrero.com/Client/id/005.json",
+        "body": "",
+        "status": 404,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>Client/id/005.json</Key><RequestId>60F8FC280FB5D86A</RequestId><HostId>zU7+OwWNAnlEG1uP2dd9aG+cC5J9ItdF2ZCYOgR+p7WSw4THO2RSPmmIJRTXgWE0z4rHAN3AFKw=</HostId></Error>",
+        "rawHeaders": [
+            "x-amz-request-id",
+            "60F8FC280FB5D86A",
+            "x-amz-id-2",
+            "zU7+OwWNAnlEG1uP2dd9aG+cC5J9ItdF2ZCYOgR+p7WSw4THO2RSPmmIJRTXgWE0z4rHAN3AFKw=",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Date",
+            "Fri, 04 Jan 2019 11:03:42 GMT",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/s3-bucket-name.carlosguerrero.com/Client/id/005.json",
+        "body": {
+            "id": "005",
+            "name": "Five Integer",
+            "username": "five"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "j0rLR0KPa7T11sVk6nAU7/2HiMOwcRtxbMlUsCbesu3SiBh5wdYtCxRLUH0NXOkmgNp8clJW4Rg=",
+            "x-amz-request-id",
+            "E67A1BBCCAAA77CA",
+            "Date",
+            "Fri, 04 Jan 2019 11:03:45 GMT",
+            "ETag",
+            "\"b6bd8b25597bd3c7f781c6985a82007b\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]

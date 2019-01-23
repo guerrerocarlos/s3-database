@@ -1,7 +1,7 @@
 var fetch = require('node-fetch')
 
 // todo:
-// - always allow ttl attribute
+// - allow ttl attribute even if not in the schema
 // - check that object functions like `save` are not overwritten by attributes, maybe use reserved words
 
 module.exports = function (bucket, AWS) {
@@ -262,7 +262,11 @@ module.exports = function (bucket, AWS) {
 
             dbHandler.queryOne = (value, cb) => {
                 dbHandler.query(value, function (e, r) {
-                    cb(e, r[0])
+                    if(r) {
+                        cb(e, r[0])
+                    } else {
+                        cb('Not found')
+                    }
                 })
             }
 
@@ -270,23 +274,48 @@ module.exports = function (bucket, AWS) {
                 return new Promise((success, reject) => {
                     dbHandler.queryOne(value, function (err, result) {
                         if (err) reject()
-                        else success(result)
+                        else {
+                            success(result)
+                        }
                     })
                 })
             }
 
+            // dbHandler.getOneOrCreate = (value, cb) => {
+            //     return new Promise((success, reject) => {
+            //         var self = this
+            //         dbHandler.getOne(value, function (err, result) {
+            //             if (err) {
+            //                 let newObj = new S3ObjectInstance(config, value)
+            //                 if(cb) {
+            //                     cb(null, newObj)
+            //                 }
+            //                 success(newObj)
+            //             } else {
+            //                 cb(null, result)
+            //                 success(result)
+            //             }
+            //         })
+            //     })
+            // }
+
             dbHandler.queryOneOrCreate = (value, cb) => {
-                var self = this
-                this.queryOne(value, function (err, result) {
-                    if (err) {
-                        cb(null, new S3ObjectInstance(config, value))
-                    } else {
-                        cb(null, result)
-                    }
+                return new Promise((success) => {
+                    dbHandler.queryOne(value, function (err, result) {
+                        if (err) {
+                            success(new S3ObjectInstance(config, value))
+                        } else {
+                            success(result)
+                        }
+                    })
                 })
             }
 
-            dbHandler.get = async (value) => {
+
+            dbHandler.get = async (value) => {  
+                if(value === undefined || Object.keys(value).length === 0) {
+                    return await dbHandler.scan()
+                }
                 if (typeof (value) === 'string') {
                     var query = {}
                     query[config.hashKey] = value

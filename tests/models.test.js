@@ -81,4 +81,12 @@ describe('Database', () => {
             return accounts
         })
     })
+    test(`Get or create`, async () => {
+        await nockManager('s3_database', `get_or_create`, 'success', async function () {
+            let client = await Client.queryOneOrCreate({ id: '005', username: 'five', name: 'Five Integer' })
+            await client.save()
+            return client
+        })
+    })
+    
 })

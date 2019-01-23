@@ -76,6 +76,14 @@ Object {
 }
 `;
 
+exports[`Database Get or create 1`] = `
+S3ObjectInstance {
+  "id": "005",
+  "name": "Five Integer",
+  "username": "five",
+}
+`;
+
 exports[`Database Update clientOne's info 1`] = `
 Object {
   "client1": S3ObjectInstance {
