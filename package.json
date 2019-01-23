@@ -3,11 +3,11 @@
 	"version": "0.0.2",
 	"description": "Use S3 as a database with optional direct public access from the frontend",
 	"license": "MIT",
-	"repository": "guerrerocarlos/s3-as-database",
+	"repository": "https://github.com/guerrerocarlos/s3-database",
 	"author": {
 		"name": "Carlos Guerrero",
 		"email": "guerrerocarlos@gmail.com",
-		"url": "https://carlosguerrero.com"
+		"url": "https://carlosguerrero.com/"
 	},
 	"babel": {
 		"presets": [
@@ -20,7 +20,7 @@
 		"node": ">=4"
 	},
 	"scripts": {
-		"test": "xo"
+		"test": "jest"
 	},
 	"files": [
 		"index.js"
@@ -38,6 +38,7 @@
 		"node-fetch": "^2.1.2"
 	},
 	"devDependencies": {
+		"jest": "^23.6.0",
 		"nock-record": "guerrerocarlos/nock-record"
 	},
 	"nyc": {
