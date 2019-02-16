@@ -30,6 +30,9 @@ module.exports = function (bucket, AWS) {
 
                 if (Object.keys(this.___config).indexOf('schema') > -1) {
                     Object.keys(this.___config.schema).forEach((each_index) => {
+                        if (this.___config.schema[each_index].default && self[each_index] === undefined) {
+                            self[each_index] = this.___config.schema[each_index].default(this)
+                        }
                         bodyToSave[each_index] = self[each_index]
                     })
                 } else {
@@ -41,6 +44,7 @@ module.exports = function (bucket, AWS) {
                 }
 
                 this.___config.indexes.forEach((each_index) => {
+                    // console.log('each_index', each_index)
                     if (self[each_index] != undefined) {
                         saved = true
                         var params = {
@@ -133,6 +137,7 @@ module.exports = function (bucket, AWS) {
             }
 
             dbHandler.query = (value, cb) => {
+                // console.log('query', value)
                 var self = this
                 var query = value
                 var parameter = 'id'// this.hashKey
@@ -145,7 +150,9 @@ module.exports = function (bucket, AWS) {
                     fetch(url)
                         .then(res => res.json())
                         .then(json => cb(null, [new S3ObjectInstance(config, json)]))
-                        .catch(err => cb(err)) // fetch doesnt call catch, check res.status or something like that 
+                        .catch(err => {
+                            cb(err)
+                        }) // fetch doesnt call catch, check res.status or something like that 
                 } else {
                     var params = {
                         Bucket: config.bucket,
@@ -250,7 +257,7 @@ module.exports = function (bucket, AWS) {
                     config.S3.deleteObjects(params, function (err, data) {
                         if (err) {
                             reject()
-                            console.log(err, err.stack); // an error occurred
+                            console.log(err); // an error occurred
                         }
                         else {
                             console.log(data);
@@ -262,10 +269,10 @@ module.exports = function (bucket, AWS) {
 
             dbHandler.queryOne = (value, cb) => {
                 dbHandler.query(value, function (e, r) {
-                    if(r) {
+                    if (r) {
                         cb(e, r[0])
                     } else {
-                        cb('Not found')
+                        cb(e)
                     }
                 })
             }
@@ -273,7 +280,7 @@ module.exports = function (bucket, AWS) {
             dbHandler.queryOnePromise = (value) => {
                 return new Promise((success, reject) => {
                     dbHandler.queryOne(value, function (err, result) {
-                        if (err) reject()
+                        if (err) reject(err)
                         else {
                             success(result)
                         }
@@ -301,9 +308,12 @@ module.exports = function (bucket, AWS) {
 
             dbHandler.queryOneOrCreate = (value, cb) => {
                 return new Promise((success) => {
-                    dbHandler.queryOne(value, function (err, result) {
+                    dbHandler.queryOne({id: value.id}, function (err, result) {
                         if (err) {
-                            success(new S3ObjectInstance(config, value))
+                            var a = new S3ObjectInstance(config, value)
+                            a.save().then(() => {
+                                success(a)
+                            })
                         } else {
                             success(result)
                         }
@@ -312,8 +322,8 @@ module.exports = function (bucket, AWS) {
             }
 
 
-            dbHandler.get = async (value) => {  
-                if(value === undefined || Object.keys(value).length === 0) {
+            dbHandler.get = async (value) => {
+                if (value === undefined || Object.keys(value).length === 0) {
                     return await dbHandler.scan()
                 }
                 if (typeof (value) === 'string') {
@@ -322,7 +332,10 @@ module.exports = function (bucket, AWS) {
                     return await dbHandler.queryPromise(query)
                 } else {
                     if (config.non_uniques.indexOf(Object.keys(value)[0]) > -1) {
+                        console.log('scan...', value)
                         let queries = await dbHandler.scan(value)
+                        console.log('queries...', queries)
+
                         // return queries
                         return await Promise.all(queries.map(dbHandler.queryOnePromise))
                     } else {

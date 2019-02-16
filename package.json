@@ -1,6 +1,6 @@
 {
 	"name": "s3-database",
-	"version": "0.0.2",
+	"version": "0.1.1",
 	"description": "Use S3 as a database with optional direct public access from the frontend",
 	"license": "MIT",
 	"repository": "https://github.com/guerrerocarlos/s3-database",

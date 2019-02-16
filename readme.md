@@ -1,14 +1,12 @@
-# s3-as-database [![Build Status](https://travis-ci.org/guerrerocarlos/s3-as-database.svg?branch=master)](https://travis-ci.org/guerrerocarlos/s3-as-database) [![codecov](https://codecov.io/gh/guerrerocarlos/s3-as-database/badge.svg?branch=master)](https://codecov.io/gh/guerrerocarlos/s3-as-database?branch=master)
+# s3-database
 
-> Use S3 as a database with public or private access from the frontend
-
+> Use S3 as backend database (with optional public access from the frontend)
 
 ## Install
 
 ```
 $ npm install s3-database
 ```
-
 
 ## Define the Models
 
@@ -59,8 +57,6 @@ var Account = models.Account
 var q = User({id: "007", name: "James"})
 var m
 ```
-
-
 
 
 ## License
