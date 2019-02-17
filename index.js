@@ -31,7 +31,11 @@ module.exports = function (bucket, AWS) {
                 if (Object.keys(this.___config).indexOf('schema') > -1) {
                     Object.keys(this.___config.schema).forEach((each_index) => {
                         if (this.___config.schema[each_index].default && self[each_index] === undefined) {
-                            self[each_index] = this.___config.schema[each_index].default(this)
+                            if(typeof this.___config.schema[each_index].default === 'function') {
+                                self[each_index] = this.___config.schema[each_index].default(this)
+                            } else {
+                                self[each_index] = this.___config.schema[each_index].default
+                            }
                         }
                         bodyToSave[each_index] = self[each_index]
                     })
