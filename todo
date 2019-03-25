@@ -1,0 +1,1 @@
+- 'repeated: true' indexes objects probably don't need content, only really used for scanning the folder 
