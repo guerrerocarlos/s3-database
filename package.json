@@ -31,10 +31,6 @@
 		"s3store"
 	],
 	"dependencies": {
-		"aws-sdk": "^2.229.1",
-		"babel-preset-env": "^1.7.0",
-		"babel-preset-stage-2": "^6.24.1",
-		"babel-preset-stage-3": "^6.24.1",
 		"node-fetch": "^2.1.2"
 	},
 	"devDependencies": {
