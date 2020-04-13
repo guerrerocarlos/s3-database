@@ -21,17 +21,13 @@ module.exports = function (bucket, AWS) {
     }
 
     async save() {
-      console.log('saving!')
-
       var self = this;
       var saved = false;
       var putPromises = [];
       var bodyToSave = {};
 
       if (Object.keys(this.___config).indexOf("schema") > -1) {
-        console.log('GOT SCHEMA')
         Object.keys(this.___config.schema).forEach(each_index => {
-          console.log('each_index', each_index)
           if (
             this.___config.schema[each_index].default &&
             self[each_index] === undefined
@@ -58,16 +54,10 @@ module.exports = function (bucket, AWS) {
       }
 
       this.___config.indexes.forEach(each_index => {
-        console.log('checking each_index', each_index, this.___config.schema[each_index])
         if (self[each_index] != undefined || this.___config.schema[each_index].composed) {
 
           saved = true;
           var index_path = each_index;
-          console.log(
-            each_index,
-            "composed?",
-            this.___config.schema[each_index]
-          );
 
           if (
             this.___config.schema[each_index] &&
@@ -83,6 +73,7 @@ module.exports = function (bucket, AWS) {
           var params = {
             Body: JSON.stringify(bodyToSave),
             Bucket: bucket,
+            // TODO: Define public objects
             // ACL: "public-read",
             // this.___config.opts && this.___config.opts.public
             // 	? "public-read"
@@ -111,26 +102,15 @@ module.exports = function (bucket, AWS) {
               ".json";
           }
 
-          console.log('PUT params >>', params)
-
           putPromises.push(
             self.___config.S3.putObject(params).promise()
           );
         }
       });
 
-
       await Promise.all(putPromises)
       return self
-      // if (!saved) {
-      // 	reject();
-      // 	if (cb) cb("S3 DB Error: No indexes provided.");
-      // } else {
-      // 	Promise.all(putPromises).then(results => {
-      // 		success();
-      // 		if (cb) cb(null, results);
-      // 	});
-      // }
+
     }
   }
 
@@ -205,10 +185,7 @@ module.exports = function (bucket, AWS) {
       };
 
       dbHandler.fetch = async (value) => {
-        // console.log('query', value)
-        var self = this;
-        var query = value;
-        var parameter = "id"; // this.hashKey
+        var parameter = "id";
         if (typeof value === "object") {
           parameter = Object.keys(value)[0];
           value = value[parameter];
@@ -233,10 +210,9 @@ module.exports = function (bucket, AWS) {
             Bucket: config.bucket,
             Key: config.collection + "/" + parameter + "/" + value + ".json"
           };
-          console.log(params)
           var data = await config.S3.getObject(params).promise()
           var instanceData = JSON.parse(data.Body.toString());
-          console.log('instanceData', instanceData)
+          // TODO: enable ttl support
           // if (
           // 	instanceData.ttl === undefined ||
           // 	instanceData.ttl < new Date().getTime()
@@ -253,57 +229,30 @@ module.exports = function (bucket, AWS) {
         }
       }
 
-      // dbHandler.queryPromise = value => {
-      // 	console.log('queryPromise', value)
-      // 	return new Promise((success, reject) => {
-      // 		dbHandler.query(value, function (err, res) {
-      // 			if (err) {
-      // 				console.log("ERR:", err);
-      // 				reject(err);
-      // 			} else {
-      // 				success(res);
-      // 			}
-      // 		});
-      // 	});
-      // };
-
       dbHandler.scan = query => {
         let allFiles = [];
-        let self = this;
         return new Promise((resolve, reject) => {
           let params = { Bucket: config.bucket };
-          let attr = config.hashKey; //Object.keys(query ? query : config.schema)[0]
-          console.log('query', query)
+          let attr = config.hashKey;
           if (query) {
-            // if (query.Prefix) {
-            // 	params.Prefix = `${config.collection}/${query.Prefix || ""}`;
-            // }
-
             if (query.Delimiter) {
               params.Delimiter = query.Delimiter;
             }
 
-            // if (!query.Prefix) {
             let key = Object.keys(query)[0];
-            // attr = key
             if (typeof query[key] === 'boolean') {
-              console.log('is boolean')
               params.Prefix = `${config.collection}/${key}/`;
             } else {
-              console.log('not boolean')
               params.Prefix = `${config.collection}/${key}/${query[key]}/`;
             }
-            // }
           } else {
             params.Prefix = `${config.collection}/${config.hashKey}/`;
           }
 
-          console.log("🚀 params", params);
           function getFromBucket(ContinuationToken) {
             if (ContinuationToken) {
               params.ContinuationToken = ContinuationToken;
-						}
-						console.log('listObjectsV2', params)
+            }
             config.S3.listObjectsV2(params, function (err, data) {
               if (err) reject({ err: err, stack: err.stack });
               else {
@@ -316,7 +265,6 @@ module.exports = function (bucket, AWS) {
                 if (data.NextContinuationToken) {
                   getFromBucket(data.NextContinuationToken);
                 } else {
-                  console.log("allFiles", allFiles);
                   var result = [];
                   allFiles.sort(
                     (a, b) =>
@@ -350,11 +298,10 @@ module.exports = function (bucket, AWS) {
       };
 
       dbHandler.delete = async (ids) => {
-        // TODO: delete completely
+        // TODO: completely remove all files from S3
         if (typeof ids === 'string') {
 
           var object = await dbHandler.get(ids)
-          console.log('going to delete:', object)
           var deleteObjects = []
 
           for (var key of config.indexes) {
@@ -362,55 +309,39 @@ module.exports = function (bucket, AWS) {
             deleteParams[key] = object[key]
             deleteObjects.push(deleteParams)
           }
-          console.log(deleteObjects)
 
           dbHandler.deleteRaw(deleteObjects)
         }
       }
 
       dbHandler.deleteRaw = objects => {
-        return new Promise((success, reject) => {
-          let _objs = [];
-          objects.forEach(_object => {
-            Object.keys(_object).forEach(_key => {
-              _objs.push({
-                Key: `${config.collection}/${_key}/${_object[_key]}.json`
-              });
+        let _objs = [];
+        objects.forEach(_object => {
+          Object.keys(_object).forEach(_key => {
+            _objs.push({
+              Key: `${config.collection}/${_key}/${_object[_key]}.json`
             });
           });
-          var params = {
-            Bucket: config.bucket,
-            Delete: {
-              Objects: _objs,
-              Quiet: false
-            }
-          };
-          config.S3.deleteObjects(params, function (err, data) {
-            if (err) {
-              reject();
-              console.log(err); // an error occurred
-            } else {
-              console.log(data);
-              success();
-            }
-          });
         });
+        var params = {
+          Bucket: config.bucket,
+          Delete: {
+            Objects: _objs,
+            Quiet: false
+          }
+        };
+        return config.S3.deleteObjects(params).promise()
       };
 
       dbHandler.set = async (newAttributes, extraAttributes) => {
         if (typeof newAttributes === 'string') {
-          console.log('🔫assign attributes', newAttributes, 'to',  extraAttributes)
           newAttributes = Object.assign(extraAttributes, { id: newAttributes })
         }
 
-        console.log('SET', newAttributes)
         try {
-          console.log('🐷 query', { [config.hashKey]: newAttributes[config.hashKey] })
           var result = await dbHandler.get(newAttributes[config.hashKey])
-          console.log('🐷result', result)
           result = Object.assign(result, newAttributes)
         } catch (err) {
-          console.log('👀not found, creating new')
           var result = new S3ObjectInstance(config, newAttributes);
         }
         await result.save()
@@ -419,31 +350,23 @@ module.exports = function (bucket, AWS) {
 
       dbHandler.ls = async (value, opts = {}) => {
         if (typeof value === "string") {
-          console.log('value is string')
           var query = {};
           query[config.hashKey] = value;
           return await dbHandler.scan(query);
         }
 
         if (typeof value === "object") {
-          console.log('value is an object')
           var key = Object.keys(value)[0]
           if (config.schema[key]) {
             if (config.schema[key].composed && typeof value[key] !== 'boolean') {
-              console.log('value is composed')
               var composed = config.schema[key].composed
               var query = {}
               query[key] = composed.map((attr) => {
-                console.log(attr, 'value', value[key][attr])
                 return value[key][attr]
               })
-              console.log('🗼query', query)
               query[key] = query[key].filter(Boolean).join('/')
-              console.log('🏰query', query)
 
               if (opts.fetchAll) {
-                console.log('got to fetch all')
-
                 let queries = await dbHandler.scan(query);
                 queries = queries.map((item) => {
                   return { [key]: `${query[key]}/${item['id']}` }
@@ -453,7 +376,6 @@ module.exports = function (bucket, AWS) {
               } else {
                 query.Delimiter = '/'
                 let queries = await dbHandler.scan(query);
-                console.log('ls result:', queries)
                 return queries
               }
             }
@@ -461,12 +383,10 @@ module.exports = function (bucket, AWS) {
 
             var query = {};
             query = { [key]: value[key] }
-            console.log('query', query)
 
             if (config.schema[key].canRepeat) {
               query.Delimiter = '/'
               var queries = await dbHandler.scan(query);
-              console.log('queries', queries)
               return queries
             }
 

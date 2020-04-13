@@ -52,7 +52,7 @@ describe('Database', () => {
             let accounts = await Account.get({ clientId: 'clientOne' })
 
             expect(accounts.length).toEqual(2)
-            return { accounts } 
+            return { accounts }
         })
     })
 
@@ -83,10 +83,10 @@ describe('Database', () => {
     })
     test(`Get or create`, async () => {
         await nockManager('s3_database', `get_or_create`, 'success', async function () {
-            let client = await Client.queryOneOrCreate({ id: '005', username: 'five', name: 'Five Integer' })
+            let client = await Client.getOrCreate({ id: '005', username: 'five', name: 'Five Integer' })
             await client.save()
             return client
         })
     })
-    
+
 })
