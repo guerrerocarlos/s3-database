@@ -1,0 +1,635 @@
+[
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/Event/id/BBB.json",
+        "body": "",
+        "status": 404,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>Event/id/BBB.json</Key><RequestId>8CF31402EA62A019</RequestId><HostId>/sM015SEisJhTBcQrrSRRBfGctLPcCvytpMmjwoW8Dp6sFbDJdjO8uJFCzXrbyolm+X8ZuWD1Zk=</HostId></Error>",
+        "rawHeaders": [
+            "x-amz-request-id",
+            "8CF31402EA62A019",
+            "x-amz-id-2",
+            "/sM015SEisJhTBcQrrSRRBfGctLPcCvytpMmjwoW8Dp6sFbDJdjO8uJFCzXrbyolm+X8ZuWD1Zk=",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:15 GMT",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/date/10-11-2020/user002.json",
+        "body": {
+            "id": "BBB",
+            "connectionId": "conn002",
+            "userId": "user002",
+            "serverTime": 1586789722220,
+            "date": "10-11-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "awDu0NUO7r1u4X26sNFxHxC17cs0A7M5oZRDrMdBmxQcevvP+SF/jMASNNXK8CSHoYSm90KVBPg=",
+            "x-amz-request-id",
+            "4AF0FF3D5B591443",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:16 GMT",
+            "ETag",
+            "\"7230a7368b27ea6f89b8c7cfbe858cec\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/userId/user002/BBB.json",
+        "body": {
+            "id": "BBB",
+            "connectionId": "conn002",
+            "userId": "user002",
+            "serverTime": 1586789722220,
+            "date": "10-11-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "8sOPNVYeTe4FqdKGK+RZ8jus4hXKlxOfi0YAkY7yHPPW+n7tQph2Vi8bXZvmX57987k0yghhGYw=",
+            "x-amz-request-id",
+            "5C15519527AEE34A",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:16 GMT",
+            "ETag",
+            "\"7230a7368b27ea6f89b8c7cfbe858cec\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/serverTime/10-11-2020/user002/conn002/1586789722220.json",
+        "body": {
+            "id": "BBB",
+            "connectionId": "conn002",
+            "userId": "user002",
+            "serverTime": 1586789722220,
+            "date": "10-11-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "hosvsqv423x2k7fQmxIkxkQrClOSYZmCfVDasIBUyS0VgbKpVrNN7ESBiKDzjy3FDXCOXFrlHj0=",
+            "x-amz-request-id",
+            "09D6CD5F213F8FE5",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:16 GMT",
+            "ETag",
+            "\"7230a7368b27ea6f89b8c7cfbe858cec\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/id/BBB.json",
+        "body": {
+            "id": "BBB",
+            "connectionId": "conn002",
+            "userId": "user002",
+            "serverTime": 1586789722220,
+            "date": "10-11-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "HJzU1QGqUVUOOX+nJI3QwHm1UYGcLtFLAkZSo2RfH1OB2H5XzG+t8V/fSi2tO7fK+v/doGrBjU4=",
+            "x-amz-request-id",
+            "431D668D884537EB",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:16 GMT",
+            "ETag",
+            "\"7230a7368b27ea6f89b8c7cfbe858cec\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/Event/id/CCC.json",
+        "body": "",
+        "status": 404,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>Event/id/CCC.json</Key><RequestId>522379D16C73BC48</RequestId><HostId>kWeCkomz30s19SJCIaREVlHrdxFdJzxWMwM/Fk2sEox6ItU9343wOAcEKiuQPzODKOOuUscniug=</HostId></Error>",
+        "rawHeaders": [
+            "x-amz-request-id",
+            "522379D16C73BC48",
+            "x-amz-id-2",
+            "kWeCkomz30s19SJCIaREVlHrdxFdJzxWMwM/Fk2sEox6ItU9343wOAcEKiuQPzODKOOuUscniug=",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:15 GMT",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/date/10-11-2020/user003.json",
+        "body": {
+            "id": "CCC",
+            "connectionId": "conn003",
+            "userId": "user003",
+            "serverTime": 1586789723330,
+            "date": "10-11-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "aPZCJfb2LUCMvH/V1tk0zJnKXiYBtUXHwRepPMW18hVicr7dWqjlo2YvauRPrQAYy1CFTQVg/mE=",
+            "x-amz-request-id",
+            "2145E2D4030C069A",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "ETag",
+            "\"02bebd2a38ce2bc848acba253aee293a\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/userId/user003/CCC.json",
+        "body": {
+            "id": "CCC",
+            "connectionId": "conn003",
+            "userId": "user003",
+            "serverTime": 1586789723330,
+            "date": "10-11-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "6Plbi8rjoBFvFMSbmnF88Iz0FC0lnmo9Smqp0SGRSwK18aaZAJWZDhI9mIyBLGjjiipZ0kYbH28=",
+            "x-amz-request-id",
+            "69A5D47B9854CAC8",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "ETag",
+            "\"02bebd2a38ce2bc848acba253aee293a\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/id/CCC.json",
+        "body": {
+            "id": "CCC",
+            "connectionId": "conn003",
+            "userId": "user003",
+            "serverTime": 1586789723330,
+            "date": "10-11-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "sF98YYqevxj2A3GtGBmdHbg5IHUXlTQD9FcwGLXARph8H9uEILl7Nu3FTxsPU3Akac+I4Qyskp4=",
+            "x-amz-request-id",
+            "83EF383755611028",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "ETag",
+            "\"02bebd2a38ce2bc848acba253aee293a\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/serverTime/10-11-2020/user003/conn003/1586789723330.json",
+        "body": {
+            "id": "CCC",
+            "connectionId": "conn003",
+            "userId": "user003",
+            "serverTime": 1586789723330,
+            "date": "10-11-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "maFgd7eehXxrlqoj2FEDtglMi1Mixbicw1QmCZnk6wrJTPNJt5ZtqsLeEriKs1UFEKUVkxa45D8=",
+            "x-amz-request-id",
+            "9B9836091F14A32A",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "ETag",
+            "\"02bebd2a38ce2bc848acba253aee293a\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/Event/id/DDD.json",
+        "body": "",
+        "status": 404,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>Event/id/DDD.json</Key><RequestId>54D16DFA810F45B3</RequestId><HostId>vbW2SvC7zBZSoZrq1Imbywm8QAyZapTJpNJfEsJFEED7afpWJ0fyF3UBtJ6AJ2s1knR/05/zgA0=</HostId></Error>",
+        "rawHeaders": [
+            "x-amz-request-id",
+            "54D16DFA810F45B3",
+            "x-amz-id-2",
+            "vbW2SvC7zBZSoZrq1Imbywm8QAyZapTJpNJfEsJFEED7afpWJ0fyF3UBtJ6AJ2s1knR/05/zgA0=",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:15 GMT",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/date/10-10-2020/user004.json",
+        "body": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724440,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "bakEXLW/i26KR9GgtBImUNMfBawe/A3D6//py5vOYdN1YtMgMXsSDoGNYOpoxE9K16SUANcy4NI=",
+            "x-amz-request-id",
+            "FA7E3B49D714688D",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "ETag",
+            "\"7ed35b60996d14d5ce8bc234bd74877e\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/serverTime/10-10-2020/user004/conn004/1586789724440.json",
+        "body": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724440,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "cNchiqWQm5E83R54xo2qG0IRTtJa1I5vhVspgzm21bwatfc9LDbjOzjSSlX6VMA16y1qJIzlhGM=",
+            "x-amz-request-id",
+            "158D955462E5D784",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "ETag",
+            "\"7ed35b60996d14d5ce8bc234bd74877e\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/userId/user004/DDD.json",
+        "body": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724440,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "qC5gA2UqjQi3FcjS6AbMpzd7rYMLzFxGYy4r6+qDjiU/7Wlp0dYA6bkfF8c7nrxKcWTJsnKkZtQ=",
+            "x-amz-request-id",
+            "43C7F0A7B9B9425A",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "ETag",
+            "\"7ed35b60996d14d5ce8bc234bd74877e\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/id/DDD.json",
+        "body": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724440,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "CGpqf1rTTKItg3yLOxXoa5TXjFKwqsQGXRdI3NnMpU6UlC3n5Cxb4MNZqQrRRa1YJGVq2HgtQ2E=",
+            "x-amz-request-id",
+            "D596B390566AD61A",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "ETag",
+            "\"7ed35b60996d14d5ce8bc234bd74877e\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/Event/id/DDD.json",
+        "body": "",
+        "status": 200,
+        "response": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724440,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "rawHeaders": [
+            "x-amz-id-2",
+            "RltV1YtyKHeSm4k9q4FNu2LGOIIgJsabv+JSSnJaBZpWIHbrV+W9BhCeC9iw9IijjZJ39jqJJY0=",
+            "x-amz-request-id",
+            "EAD0932E21AF0391",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "Last-Modified",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "ETag",
+            "\"7ed35b60996d14d5ce8bc234bd74877e\"",
+            "Accept-Ranges",
+            "bytes",
+            "Content-Type",
+            "application/octet-stream",
+            "Content-Length",
+            "171",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/id/DDD.json",
+        "body": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724441,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "D0lqycRrTvfqlk1F3J1nzEBmp66G+dhR7D3/tyfiDd3O3D1PPNetF2AoOf4rC/GR3bM/RBE9TBk=",
+            "x-amz-request-id",
+            "412206AB59E911FE",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:18 GMT",
+            "ETag",
+            "\"9b6718fbc3acb3e70127417fd66c1d2b\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/userId/user004/DDD.json",
+        "body": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724441,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "IZVeZb9Y9VpsLgzMXBK7Rvc4JwKcFDzdYha9inU+LIZu+pLNGEKWSyhXNid4oTC80K+JHd+wSFs=",
+            "x-amz-request-id",
+            "F280496A86689FD3",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:18 GMT",
+            "ETag",
+            "\"9b6718fbc3acb3e70127417fd66c1d2b\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/serverTime/10-10-2020/user004/conn004/1586789724441.json",
+        "body": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724441,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "hAX8EpWxpDwtm2fvExmvlcfEWNsYk6dRgy8pkBkCOxAv9Tnj7yqQuiZn6d1pwP8ceyX7nUEUl30=",
+            "x-amz-request-id",
+            "FC0A6A40E52D83F1",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:18 GMT",
+            "ETag",
+            "\"9b6718fbc3acb3e70127417fd66c1d2b\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/date/10-10-2020/user004.json",
+        "body": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724441,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "1lNTEqGrbeJb8KsNaW5eBwZBdXHR5Tb9Xm3OBQAcc584s3izg5BTk/pwv6/c6G2zTfsBRH6dY1k=",
+            "x-amz-request-id",
+            "E23A846DE6F9486E",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:18 GMT",
+            "ETag",
+            "\"9b6718fbc3acb3e70127417fd66c1d2b\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]

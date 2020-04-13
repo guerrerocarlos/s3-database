@@ -1,0 +1,104 @@
+[
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/?list-type=2&prefix=Event%2FserverTime%2F10-10-2020%2Fuser004%2Fconn004%2F",
+        "body": "",
+        "status": 200,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ListBucketResult xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\"><Name>d4js</Name><Prefix>Event/serverTime/10-10-2020/user004/conn004/</Prefix><KeyCount>2</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>Event/serverTime/10-10-2020/user004/conn004/1586789724440.json</Key><LastModified>2020-04-13T15:35:17.000Z</LastModified><ETag>&quot;7ed35b60996d14d5ce8bc234bd74877e&quot;</ETag><Size>171</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>Event/serverTime/10-10-2020/user004/conn004/1586789724441.json</Key><LastModified>2020-04-13T15:35:18.000Z</LastModified><ETag>&quot;9b6718fbc3acb3e70127417fd66c1d2b&quot;</ETag><Size>171</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "7zFfAnsinGqSIuoBqCLIYueLZsFvcezXO+fCYyLfBk/NNdJhr5t83tQRlix/Qp3A58e7KBU/a84=",
+            "x-amz-request-id",
+            "B1DC63049EFECF9E",
+            "Date",
+            "Mon, 13 Apr 2020 15:40:34 GMT",
+            "x-amz-bucket-region",
+            "eu-west-2",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/Event/serverTime/10-10-2020/user004/conn004/1586789724440.json",
+        "body": "",
+        "status": 200,
+        "response": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724440,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "rawHeaders": [
+            "x-amz-id-2",
+            "B9VWzaJ8xV8EJR3L8Q+D8HteaDGAqDZD8OV5y1WnLrUrJmOW/pLRca7TUaslwoVAeWlnfJgSFlU=",
+            "x-amz-request-id",
+            "99A80B34652A86F4",
+            "Date",
+            "Mon, 13 Apr 2020 15:40:35 GMT",
+            "Last-Modified",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "ETag",
+            "\"7ed35b60996d14d5ce8bc234bd74877e\"",
+            "Accept-Ranges",
+            "bytes",
+            "Content-Type",
+            "application/octet-stream",
+            "Content-Length",
+            "171",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/Event/serverTime/10-10-2020/user004/conn004/1586789724441.json",
+        "body": "",
+        "status": 200,
+        "response": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724441,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "rawHeaders": [
+            "x-amz-id-2",
+            "tMGrAwJVzaCoLjc6YRUN+o8HS5J+AESCPjjV+5Y/n1lHeB8yJLa7559kKD6lKk8IGSvR16uy8So=",
+            "x-amz-request-id",
+            "058B1A8AADCC37AF",
+            "Date",
+            "Mon, 13 Apr 2020 15:40:35 GMT",
+            "Last-Modified",
+            "Mon, 13 Apr 2020 15:35:18 GMT",
+            "ETag",
+            "\"9b6718fbc3acb3e70127417fd66c1d2b\"",
+            "Accept-Ranges",
+            "bytes",
+            "Content-Type",
+            "application/octet-stream",
+            "Content-Length",
+            "171",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]

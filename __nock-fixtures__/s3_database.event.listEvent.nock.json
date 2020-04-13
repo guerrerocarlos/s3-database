@@ -1,0 +1,26 @@
+[
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/?list-type=2&prefix=Event%2Fid%2F",
+        "body": "",
+        "status": 200,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ListBucketResult xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\"><Name>d4js</Name><Prefix>Event/id/</Prefix><KeyCount>4</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>Event/id/AAA.json</Key><LastModified>2020-04-13T15:35:16.000Z</LastModified><ETag>&quot;401b5c72bbe93df2839fae6bf214b097&quot;</ETag><Size>171</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>Event/id/BBB.json</Key><LastModified>2020-04-13T15:35:16.000Z</LastModified><ETag>&quot;7230a7368b27ea6f89b8c7cfbe858cec&quot;</ETag><Size>171</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>Event/id/CCC.json</Key><LastModified>2020-04-13T15:35:17.000Z</LastModified><ETag>&quot;02bebd2a38ce2bc848acba253aee293a&quot;</ETag><Size>171</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>Event/id/DDD.json</Key><LastModified>2020-04-13T15:35:18.000Z</LastModified><ETag>&quot;9b6718fbc3acb3e70127417fd66c1d2b&quot;</ETag><Size>171</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "miBDzznm9OblBM59vJswDulp2nOV1A6Xn7YX1YTREQeev2p9YAyYpC9i5SdAV18qR9WjMarx1Xs=",
+            "x-amz-request-id",
+            "4676B7A55513D48C",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:18 GMT",
+            "x-amz-bucket-region",
+            "eu-west-2",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]

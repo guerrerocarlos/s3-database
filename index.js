@@ -113,12 +113,12 @@ module.exports = function (bucket, AWS) {
 		}
 	}
 
-	class S3ObjectInstance extends S3Object {
+	class S3Obj extends S3Object {
 		constructor(config, obj) {
 			super(config);
 
-			if (!(this instanceof S3ObjectInstance)) {
-				return new S3ObjectInstance(obj);
+			if (!(this instanceof S3Obj)) {
+				return new S3Obj(obj);
 			}
 			for (var key in obj) {
 				this[key] = obj[key];
@@ -168,7 +168,7 @@ module.exports = function (bucket, AWS) {
 			}
 
 			var dbHandler = function (obj) {
-				return new S3ObjectInstance(config, obj);
+				return new S3Obj(config, obj);
 			};
 
 			dbHandler.addSchema = schemaDefinition => {
@@ -203,13 +203,12 @@ module.exports = function (bucket, AWS) {
 						new Date().getTime();
 					return fetch(url)
 						.then(res => res.json())
-						.then(json => new S3ObjectInstance(config, json))
+						.then(json => new S3Obj(config, json))
 				} else {
 					var params = {
 						Bucket: config.bucket,
 						Key: config.collection + "/" + parameter + "/" + value + ".json"
 					};
-					console.log('params', params)
 					var data = await config.S3.getObject(params).promise()
 					var instanceData = JSON.parse(data.Body.toString());
 					// TODO: enable ttl support
@@ -217,14 +216,14 @@ module.exports = function (bucket, AWS) {
 					// 	instanceData.ttl === undefined ||
 					// 	instanceData.ttl < new Date().getTime()
 					// ) {
-					// 	return new S3ObjectInstance(config, instanceData)
+					// 	return new S3Obj(config, instanceData)
 					// } else {
 					// 	// if (instanceData.ttl >= new Date().getTime()) {
 					// 	//     // delete the object
 					// 	// }
-					// 	return new S3ObjectInstance(config, instanceData)
+					// 	return new S3Obj(config, instanceData)
 					// }
-					return new S3ObjectInstance(config, instanceData)
+					return new S3Obj(config, instanceData)
 
 				}
 			}
@@ -345,7 +344,7 @@ module.exports = function (bucket, AWS) {
 					var result = await dbHandler.get(newAttributes[config.hashKey])
 					result = Object.assign(result, newAttributes)
 				} catch (err) {
-					var result = new S3ObjectInstance(config, newAttributes);
+					var result = new S3Obj(config, newAttributes);
 				}
 				await result.save()
 				return result

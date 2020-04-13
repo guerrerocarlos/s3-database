@@ -42,7 +42,7 @@ async function nockManager(testName, specificCase, specificResult, t, callback) 
 	});
 	let result = await callback()
 	completeRecording()
-	t.snapshot(result);
+	t.snapshot({ action: callback.toString(), result });
 	assertScopesFinished()
 	return result
 }

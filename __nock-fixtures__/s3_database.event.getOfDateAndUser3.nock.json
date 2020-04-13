@@ -1,0 +1,104 @@
+[
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/?list-type=2&prefix=Event%2FserverTime%2F10-10-2020%2Fuser004%2F",
+        "body": "",
+        "status": 200,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ListBucketResult xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\"><Name>d4js</Name><Prefix>Event/serverTime/10-10-2020/user004/</Prefix><KeyCount>2</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>Event/serverTime/10-10-2020/user004/conn004/1586789724440.json</Key><LastModified>2020-04-13T15:35:17.000Z</LastModified><ETag>&quot;7ed35b60996d14d5ce8bc234bd74877e&quot;</ETag><Size>171</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>Event/serverTime/10-10-2020/user004/conn004/1586789724441.json</Key><LastModified>2020-04-13T15:35:18.000Z</LastModified><ETag>&quot;9b6718fbc3acb3e70127417fd66c1d2b&quot;</ETag><Size>171</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "FeivBEjKa9jsp1EjBFm2+q8hAoSLc8Th/kiP2+/BiWVY9pUB1KGDTey8b+Inm63OpC8cSr1/US0=",
+            "x-amz-request-id",
+            "02435AEC8DA991C9",
+            "Date",
+            "Mon, 13 Apr 2020 15:38:32 GMT",
+            "x-amz-bucket-region",
+            "eu-west-2",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/Event/serverTime/10-10-2020/user004/conn004/1586789724440.json",
+        "body": "",
+        "status": 200,
+        "response": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724440,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "rawHeaders": [
+            "x-amz-id-2",
+            "k9mXy14oSH8i1AYhW533T+y8Cb69kCe+KpdFnyBgNb2VxzJT9u/pJIRzlZjqi6gCOyCuhkV5azY=",
+            "x-amz-request-id",
+            "FB76E53E53D4D1A7",
+            "Date",
+            "Mon, 13 Apr 2020 15:38:32 GMT",
+            "Last-Modified",
+            "Mon, 13 Apr 2020 15:35:17 GMT",
+            "ETag",
+            "\"7ed35b60996d14d5ce8bc234bd74877e\"",
+            "Accept-Ranges",
+            "bytes",
+            "Content-Type",
+            "application/octet-stream",
+            "Content-Length",
+            "171",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/Event/serverTime/10-10-2020/user004/conn004/1586789724441.json",
+        "body": "",
+        "status": 200,
+        "response": {
+            "id": "DDD",
+            "connectionId": "conn004",
+            "userId": "user004",
+            "serverTime": 1586789724441,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "rawHeaders": [
+            "x-amz-id-2",
+            "gbXjAYYQcd9rQkcdGrP+MsWjVTPnRuQwd6mnMdHtHcsZz4y1hvE2e3H7IoiM/z9ErUie8U7cLWw=",
+            "x-amz-request-id",
+            "BE565724F04FC9AA",
+            "Date",
+            "Mon, 13 Apr 2020 15:38:32 GMT",
+            "Last-Modified",
+            "Mon, 13 Apr 2020 15:35:18 GMT",
+            "ETag",
+            "\"9b6718fbc3acb3e70127417fd66c1d2b\"",
+            "Accept-Ranges",
+            "bytes",
+            "Content-Type",
+            "application/octet-stream",
+            "Content-Length",
+            "171",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]

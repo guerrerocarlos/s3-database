@@ -1,0 +1,26 @@
+[
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/?list-type=2&delimiter=%2F&prefix=Event%2FserverTime%2F10-10-2020%2Fuser004%2Fconn004%2F",
+        "body": "",
+        "status": 200,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ListBucketResult xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\"><Name>d4js</Name><Prefix>Event/serverTime/10-10-2020/user004/conn004/</Prefix><KeyCount>2</KeyCount><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><IsTruncated>false</IsTruncated><Contents><Key>Event/serverTime/10-10-2020/user004/conn004/1586789724440.json</Key><LastModified>2020-04-13T15:35:17.000Z</LastModified><ETag>&quot;7ed35b60996d14d5ce8bc234bd74877e&quot;</ETag><Size>171</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>Event/serverTime/10-10-2020/user004/conn004/1586789724441.json</Key><LastModified>2020-04-13T15:35:18.000Z</LastModified><ETag>&quot;9b6718fbc3acb3e70127417fd66c1d2b&quot;</ETag><Size>171</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "IwhlDgqKLbbDQe2KZIdOIVs/DmCqLo51l8oKUKsPou+gkn2xAGV25R7mI1GArnGNAOVwBTl/Ff0=",
+            "x-amz-request-id",
+            "4280B9925E42C3FF",
+            "Date",
+            "Mon, 13 Apr 2020 15:39:46 GMT",
+            "x-amz-bucket-region",
+            "eu-west-2",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/?list-type=2&delimiter=%2F&prefix=Event%2FuserId%2F",
+        "body": "",
+        "status": 200,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ListBucketResult xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\"><Name>d4js</Name><Prefix>Event/userId/</Prefix><KeyCount>3</KeyCount><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>Event/userId/user002/</Prefix></CommonPrefixes><CommonPrefixes><Prefix>Event/userId/user003/</Prefix></CommonPrefixes><CommonPrefixes><Prefix>Event/userId/user004/</Prefix></CommonPrefixes></ListBucketResult>",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "uQn4tU25FvAs74/wLiQABtOh83vpYbjV1xHZogV8yMzYGOndQ7R5mYyrcnIZ/mrMVMjSQubuIhM=",
+            "x-amz-request-id",
+            "336BB4E7BDEEBD18",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:19 GMT",
+            "x-amz-bucket-region",
+            "eu-west-2",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]

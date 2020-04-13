@@ -1,0 +1,180 @@
+[
+    {
+        "scope": "https://d4js.s3.amazonaws.com:443",
+        "method": "GET",
+        "path": "/Event/id/AAA.json",
+        "body": "",
+        "status": 400,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AuthorizationHeaderMalformed</Code><Message>The authorization header is malformed; the region 'us-east-1' is wrong; expecting 'eu-west-2'</Message><Region>eu-west-2</Region><RequestId>5E23646CDB2CE728</RequestId><HostId>nIA2UQV077SqhQGwiKS314Zm9ZGcvkbV5nutD8wEQ5FqfSPcHEeO9OBnFoO6oiKNr25hWeKeGMM=</HostId></Error>",
+        "rawHeaders": [
+            "x-amz-request-id",
+            "5E23646CDB2CE728",
+            "x-amz-id-2",
+            "nIA2UQV077SqhQGwiKS314Zm9ZGcvkbV5nutD8wEQ5FqfSPcHEeO9OBnFoO6oiKNr25hWeKeGMM=",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:13 GMT",
+            "Connection",
+            "close",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.amazonaws.com:443",
+        "method": "GET",
+        "path": "/Event/id/AAA.json",
+        "body": "",
+        "status": 404,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>Event/id/AAA.json</Key><RequestId>726BA35CD14571E3</RequestId><HostId>FNAdJrIuzuE5aAXlmyE4zRIQuftD9tNbHwjYMN1J8Ev/YvBIHY07rdYbQzgW5Km5/c3RzB+yd4k=</HostId></Error>",
+        "rawHeaders": [
+            "x-amz-request-id",
+            "726BA35CD14571E3",
+            "x-amz-id-2",
+            "FNAdJrIuzuE5aAXlmyE4zRIQuftD9tNbHwjYMN1J8Ev/YvBIHY07rdYbQzgW5Km5/c3RzB+yd4k=",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:14 GMT",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/id/AAA.json",
+        "body": {
+            "id": "AAA",
+            "connectionId": "conn001",
+            "userId": "user002",
+            "serverTime": 1586789721110,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "+Aaoty+SGCULSWpmeartBwPLkUREYOjz3SJy74ESG8fwiMUcmfHgamRQJXBx2peGtIt5YVcq99o=",
+            "x-amz-request-id",
+            "FE09B616F4D0719D",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:16 GMT",
+            "ETag",
+            "\"401b5c72bbe93df2839fae6bf214b097\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/userId/user002/AAA.json",
+        "body": {
+            "id": "AAA",
+            "connectionId": "conn001",
+            "userId": "user002",
+            "serverTime": 1586789721110,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "K5CwvPp04cUprq1ZL8HxPhES4FXdLBbqw2qLVuJHBmhJL2FLs4aSehuwbNeJpSd+KlVuJmV/y/8=",
+            "x-amz-request-id",
+            "F3E3BF68FAA6847E",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:16 GMT",
+            "ETag",
+            "\"401b5c72bbe93df2839fae6bf214b097\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/date/10-10-2020/user002.json",
+        "body": {
+            "id": "AAA",
+            "connectionId": "conn001",
+            "userId": "user002",
+            "serverTime": 1586789721110,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "DkYGbKMRoI0Ho7SKvutH8lwVnR3Qf0cvqf7M8KJmvayBNl3tpNIS1vUNezwbowLpXKprng/bVHg=",
+            "x-amz-request-id",
+            "79CCA4AD1D4766D7",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:16 GMT",
+            "ETag",
+            "\"401b5c72bbe93df2839fae6bf214b097\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Event/serverTime/10-10-2020/user002/conn001/1586789721110.json",
+        "body": {
+            "id": "AAA",
+            "connectionId": "conn001",
+            "userId": "user002",
+            "serverTime": 1586789721110,
+            "date": "10-10-2020",
+            "event": "pageview",
+            "payload": {
+                "path": "/",
+                "browser": "Google Chrome"
+            }
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "LlWSi+QNT97iAJdBBlBp28RjClqBogTMyieAsE309lRkMCsqcqEiVlSvXFkc//cWDXEvHvcgK/o=",
+            "x-amz-request-id",
+            "AC2EE1122E338E21",
+            "Date",
+            "Mon, 13 Apr 2020 15:35:16 GMT",
+            "ETag",
+            "\"401b5c72bbe93df2839fae6bf214b097\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]
