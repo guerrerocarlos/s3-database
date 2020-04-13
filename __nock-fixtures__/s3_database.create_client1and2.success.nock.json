@@ -1,0 +1,79 @@
+[
+    {
+        "scope": "https://d4js.s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Client/id/0000001.json",
+        "body": {
+            "id": "0000001",
+            "ip": "4.2.2.1"
+        },
+        "status": 400,
+        "response": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AuthorizationHeaderMalformed</Code><Message>The authorization header is malformed; the region 'us-east-1' is wrong; expecting 'eu-west-2'</Message><Region>eu-west-2</Region><RequestId>3A5822432FA7CDA7</RequestId><HostId>Irs3sYqIF4f38wQZsZpeKFvSqa+dLTQTtmL7QJi1LoPGn4ybhddXQoVt1eZaF5J/L3NXmwFDggo=</HostId></Error>",
+        "rawHeaders": [
+            "x-amz-request-id",
+            "3A5822432FA7CDA7",
+            "x-amz-id-2",
+            "Irs3sYqIF4f38wQZsZpeKFvSqa+dLTQTtmL7QJi1LoPGn4ybhddXQoVt1eZaF5J/L3NXmwFDggo=",
+            "Content-Type",
+            "application/xml",
+            "Transfer-Encoding",
+            "chunked",
+            "Date",
+            "Mon, 13 Apr 2020 11:45:21 GMT",
+            "Connection",
+            "close",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Client/id/0000001.json",
+        "body": {
+            "id": "0000001",
+            "ip": "4.2.2.1"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "eN7MjaYDWuurc6VqmHZNGpgqBX8mpeaYn8W8mR7x2OxNsSFjI2GbYOHtY0nz7bRTOrfE0ugp8co=",
+            "x-amz-request-id",
+            "9437FD4D5999301B",
+            "Date",
+            "Mon, 13 Apr 2020 11:45:22 GMT",
+            "ETag",
+            "\"950f92d26dfeb72ae93d98ceb3240e9a\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Client/id/0000002.json",
+        "body": {
+            "id": "0000002",
+            "ip": "8.8.8.8"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "SlTKhcKWwuIy43f0rrQcX2YiwoNowEXC4mF9PQ506uHNorIoegwTv0Gl5PnqJ3NPuzywwxZ63nM=",
+            "x-amz-request-id",
+            "B6C16312170CF807",
+            "Date",
+            "Mon, 13 Apr 2020 11:45:23 GMT",
+            "ETag",
+            "\"1ae3d82d9f611ab075379ca29944f4c5\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]

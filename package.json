@@ -9,18 +9,11 @@
 		"email": "guerrerocarlos@gmail.com",
 		"url": "https://carlosguerrero.com/"
 	},
-	"babel": {
-		"presets": [
-			"env",
-			"stage-2",
-			"stage-3"
-		]
-	},
 	"engines": {
 		"node": ">=4"
 	},
 	"scripts": {
-		"test": "jest"
+		"test": "ava --serial"
 	},
 	"files": [
 		"index.js"
@@ -34,7 +27,8 @@
 		"node-fetch": "^2.1.2"
 	},
 	"devDependencies": {
-		"jest": "^23.6.0",
+		"ava": "^3.6.0",
+		"aws-sdk": "^2.656.0",
 		"nock-record": "guerrerocarlos/nock-record"
 	},
 	"nyc": {

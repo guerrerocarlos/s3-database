@@ -1,0 +1,85 @@
+[
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "GET",
+        "path": "/Client/id/0000001.json",
+        "body": "",
+        "status": 200,
+        "response": {
+            "id": "0000001",
+            "ip": "4.2.2.1"
+        },
+        "rawHeaders": [
+            "x-amz-id-2",
+            "pa1hkOp/zJfgn4ibUA2Xx5WXEjkryMn52s4zn5VCSqZkMfLMBjhmWt/xG+v5rfp/hYszqhnZ9fk=",
+            "x-amz-request-id",
+            "7164BE75CBFACDC8",
+            "Date",
+            "Mon, 13 Apr 2020 11:45:24 GMT",
+            "Last-Modified",
+            "Mon, 13 Apr 2020 11:45:22 GMT",
+            "ETag",
+            "\"950f92d26dfeb72ae93d98ceb3240e9a\"",
+            "Accept-Ranges",
+            "bytes",
+            "Content-Type",
+            "application/octet-stream",
+            "Content-Length",
+            "31",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Client/id/0000001.json",
+        "body": {
+            "id": "0000001",
+            "ip": "4.2.2.1",
+            "userId": "Agent0001"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "bBFVxkk73ViTGU2rH6tByli6cik8j8WcDvrXHNdHp02YXEbHHD2verBawGwt1MnZHjoujTOuoqE=",
+            "x-amz-request-id",
+            "894D360DBAF1B65E",
+            "Date",
+            "Mon, 13 Apr 2020 11:45:24 GMT",
+            "ETag",
+            "\"b7255bada7c9a4cd32b870945b891884\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    },
+    {
+        "scope": "https://d4js.s3.eu-west-2.amazonaws.com:443",
+        "method": "PUT",
+        "path": "/Client/userId/Agent0001.json",
+        "body": {
+            "id": "0000001",
+            "ip": "4.2.2.1",
+            "userId": "Agent0001"
+        },
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "x-amz-id-2",
+            "gaXguIc9cOWDgYJLzTx6TEUHWcSkZrbmq8RGlJ/IsxguZDtqIaJtRk+85IG04rpqL7BmrGfukOw=",
+            "x-amz-request-id",
+            "18E5D9FAB4DEAC52",
+            "Date",
+            "Mon, 13 Apr 2020 11:45:24 GMT",
+            "ETag",
+            "\"b7255bada7c9a4cd32b870945b891884\"",
+            "Content-Length",
+            "0",
+            "Server",
+            "AmazonS3"
+        ]
+    }
+]
