@@ -213,7 +213,7 @@ module.exports = function (bucket, AWS, opts) {
 								parameter,
 								value + ".json"].filter(Boolean).join("/")
 					};
-					log('params', params)
+					console.log('params', params)
 					var data = await this.config.S3.getObject(params).promise()
 					var instanceData = JSON.parse(data.Body.toString());
 					console.log("instanceData", instanceData)
@@ -431,9 +431,9 @@ module.exports = function (bucket, AWS, opts) {
 							}
 
 							return queries
+						} else {
+							return [await dbHandler.get(query)]
 						}
-
-						return [query]
 
 					} else {
 						throw Error(`"${key}" is not defined in ${collection}'s schema`)
