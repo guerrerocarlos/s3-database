@@ -1,4 +1,4 @@
-var fetch = require("node-fetch");
+// var fetch = require("node-fetch");
 var log = console.log
 // todo:
 // - allow ttl attribute even if not in the schema
@@ -186,24 +186,24 @@ module.exports = function (bucket, AWS, opts) {
 					parameter = Object.keys(value)[0];
 					value = value[parameter];
 				}
-				if (this.config.opts && this.config.opts.public) {
-					var url = [
-						"https://s3.amazonaws.com/" +
-						this.config.bucket
-						,
-						dbPrefix
-						,
-						this.config.collection
-						,
-						parameter
-						,
-						value +
-						".json?preventCache=" +
-						new Date().getTime()].filter(Boolean).join("/")
-					return fetch(url)
-						.then(res => res.json())
-						.then(json => new S3Obj(this.config, json))
-				} else {
+				// if (this.config.opts && this.config.opts.public) {
+				// 	var url = [
+				// 		"https://s3.amazonaws.com/" +
+				// 		this.config.bucket
+				// 		,
+				// 		dbPrefix
+				// 		,
+				// 		this.config.collection
+				// 		,
+				// 		parameter
+				// 		,
+				// 		value +
+				// 		".json?preventCache=" +
+				// 		new Date().getTime()].filter(Boolean).join("/")
+				// 	return fetch(url)
+				// 		.then(res => res.json())
+				// 		.then(json => new S3Obj(this.config, json))
+				// } else {
 					var params = {
 						Bucket: this.config.bucket,
 						Key:
@@ -231,7 +231,7 @@ module.exports = function (bucket, AWS, opts) {
 					// }
 					return new S3Obj(this.config, instanceData)
 
-				}
+				// }
 			}
 
 			dbHandler.scan = query => {

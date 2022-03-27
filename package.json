@@ -24,12 +24,8 @@
 		"s3store"
 	],
 	"dependencies": {
-		"node-fetch": "^2.1.2",
-		"aws-sdk": "^2.656.0"
 	},
 	"devDependencies": {
-		"ava": "^3.6.0",
-		"nock-record": "guerrerocarlos/nock-record"
 	},
 	"nyc": {
 		"reporter": [
