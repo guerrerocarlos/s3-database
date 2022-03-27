@@ -1,6 +1,6 @@
 {
 	"name": "s3-database",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"description": "Use S3 as a database with optional direct public access from the frontend",
 	"license": "MIT",
 	"repository": "https://github.com/guerrerocarlos/s3-database",
@@ -24,11 +24,11 @@
 		"s3store"
 	],
 	"dependencies": {
-		"node-fetch": "^2.1.2"
+		"node-fetch": "^2.1.2",
+		"aws-sdk": "^2.656.0"
 	},
 	"devDependencies": {
 		"ava": "^3.6.0",
-		"aws-sdk": "^2.656.0",
 		"nock-record": "guerrerocarlos/nock-record"
 	},
 	"nyc": {

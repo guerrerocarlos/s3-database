@@ -1,14 +1,19 @@
 var fetch = require("node-fetch");
-
+var log = console.log
 // todo:
 // - allow ttl attribute even if not in the schema
 // - check that object functions like `save` are not overwritten by attributes, maybe use reserved words
 
-module.exports = function (bucket, AWS) {
+module.exports = function (bucket, AWS, opts) {
+
+	console.log("s3-database", { bucket })
+
+	let dbPrefix = opts && opts.dbPrefix
 	class S3Object {
 		constructor(config) {
-			this.___config = config;
-			Object.defineProperty(this, "___config", {
+			// console.log("config", config)
+			this._config = config;
+			Object.defineProperty(this, "_config", {
 				enumerable: false,
 				writable: true
 			});
@@ -20,25 +25,26 @@ module.exports = function (bucket, AWS) {
 		}
 
 		async save() {
+			console.log("SAVE!")
 			var self = this;
 			var saved = false;
 			var putPromises = [];
 			var bodyToSave = {};
-
-			if (Object.keys(this.___config).indexOf("schema") > -1) {
-				Object.keys(this.___config.schema).forEach(each_index => {
+			// console.log("this._config", this._config)
+			if (Object.keys(this._config).indexOf("schema") > -1) {
+				Object.keys(this._config.schema).forEach(each_index => {
 					if (
-						this.___config.schema[each_index].default &&
+						this._config.schema[each_index].default &&
 						self[each_index] === undefined
 					) {
 						if (
-							typeof this.___config.schema[each_index].default === "function"
+							typeof this._config.schema[each_index].default === "function"
 						) {
-							self[each_index] = this.___config.schema[each_index].default(
+							self[each_index] = this._config.schema[each_index].default(
 								this
 							);
 						} else {
-							self[each_index] = this.___config.schema[each_index].default;
+							self[each_index] = this._config.schema[each_index].default;
 						}
 					}
 					bodyToSave[each_index] = self[each_index];
@@ -52,17 +58,17 @@ module.exports = function (bucket, AWS) {
 				});
 			}
 
-			this.___config.indexes.forEach(each_index => {
-				if (self[each_index] != undefined || this.___config.schema[each_index].composed) {
+			this._config.indexes.forEach(each_index => {
+				if (self[each_index] != undefined || this._config.schema[each_index].composed) {
 
 					saved = true;
 					var index_path = each_index;
 
 					if (
-						this.___config.schema[each_index] &&
-						this.___config.schema[each_index].composed
+						this._config.schema[each_index] &&
+						this._config.schema[each_index].composed
 					) {
-						index_path = each_index + '/' + this.___config.schema[each_index].composed
+						index_path = each_index + '/' + this._config.schema[each_index].composed
 							.map(key => {
 								return self[key];
 							})
@@ -71,38 +77,36 @@ module.exports = function (bucket, AWS) {
 
 					var params = {
 						Body: JSON.stringify(bodyToSave),
-						Bucket: bucket,
+						Bucket: this._config.bucket,
 						// TODO: Define public objects
 						// ACL: "public-read",
-						// this.___config.opts && this.___config.opts.public
+						// this._config.opts && this._config.opts.public
 						// 	? "public-read"
 						// 	: "private",
 						Key:
-							this.___config.collection +
-							"/" +
-							index_path +
-							"/" +
-							self[each_index] +
-							".json"
+							[
+								dbPrefix,
+								this._config.collection,
+								index_path,
+							`${self[each_index]}.json`].filter(Boolean).join("/")
 					};
 
 					if (
-						this.___config.hashKey &&
-						this.___config.canRepeat.indexOf(each_index) > -1
+						this._config.hashKey &&
+						this._config.canRepeat.indexOf(each_index) > -1
 					) {
 						params.Key =
-							this.___config.collection +
-							"/" +
-							each_index +
-							"/" +
-							self[each_index] +
-							"/" +
-							self[this.___config.schema[each_index].key || this.___config.hashKey] +
-							".json";
+							[
+								dbPrefix,
+								this._config.collection,
+								each_index,
+							self[each_index],
+							self[this._config.schema[each_index].key || this._config.hashKey] +
+							".json"].filter(Boolean).join("/")
 					}
 
 					putPromises.push(
-						self.___config.S3.putObject(params).promise()
+						this._config.S3.putObject(params).promise()
 					);
 				}
 			});
@@ -128,57 +132,50 @@ module.exports = function (bucket, AWS) {
 		}
 	}
 
-	class DBCreator {
-		constructor(collection, schema, opts) {
-			var config = {};
-			config.hashKey = "id";
-			config.collection = collection;
-			config.opts = opts;
-			config.bucket = bucket;
-			config.S3 = new AWS.S3();
-
-			Object.defineProperty(config, "S3", {
-				enumerable: false,
-				writable: true
-			});
-
-			config.schema = schema;
-			config.canRepeat = [];
-
-			if (schema == undefined) {
-				this.indexes = ["id"];
-			} else {
-				if (typeof schema === "object") {
-					var newIndexes = [];
-					Object.keys(schema).forEach(eachIndex => {
-						if (schema[eachIndex].hashKey || schema[eachIndex].index) {
-							newIndexes.push(eachIndex);
-							if (schema[eachIndex].canRepeat) {
-								config.canRepeat.push(eachIndex);
-							}
-							if (schema[eachIndex].hashKey) {
-								config.hashKey = eachIndex;
-							}
-						}
-					});
-					config.indexes = newIndexes;
-				} else {
-					config.indexes = indexes;
-				}
+	class DBFactory {
+		constructor(collectionName, schema, opts) {
+			this.config = {
+				hashKey: "id",
+				indexes: [],
+				collection: collectionName,
+				opts: opts,
+				bucket,
+				S3: new AWS.S3(),
+				schema,
+				canRepeat: []
 			}
 
-			var dbHandler = function (obj) {
-				return new S3Obj(config, obj);
+			// Object.defineProperty(this.config, "S3", {
+			// 	enumerable: false,
+			// 	writable: false
+			// });
+
+			var newIndexes = [];
+			Object.keys(schema).forEach(eachIndex => {
+				if (schema[eachIndex].hashKey || schema[eachIndex].index) {
+					newIndexes.push(eachIndex);
+					if (schema[eachIndex].canRepeat) {
+						this.config.canRepeat.push(eachIndex);
+					}
+					if (schema[eachIndex].hashKey) {
+						this.config.hashKey = eachIndex;
+					}
+				}
+			});
+			this.config.indexes = newIndexes;
+
+			var dbHandler = (obj) => {
+				return new S3Obj(this.config, obj);
 			};
 
 			dbHandler.addSchema = schemaDefinition => {
 				Object.keys(schemaDefinition).forEach(schemaKey => {
-					config.schema[schemaKey] = schemaDefinition[schemaKey];
+					this.config.schema[schemaKey] = schemaDefinition[schemaKey];
 					if (schemaDefinition[schemaKey].index) {
-						config.indexes.push(schemaKey);
+						this.config.indexes.push(schemaKey);
 					}
 					if (schemaDefinition[schemaKey].repeated) {
-						config.canRepeat.push(eachIndex);
+						this.config.canRepeat.push(eachIndex);
 					}
 				});
 			};
@@ -189,28 +186,37 @@ module.exports = function (bucket, AWS) {
 					parameter = Object.keys(value)[0];
 					value = value[parameter];
 				}
-				if (config.opts && config.opts.public) {
-					var url =
+				if (this.config.opts && this.config.opts.public) {
+					var url = [
 						"https://s3.amazonaws.com/" +
-						config.bucket +
-						"/" +
-						config.collection +
-						"/" +
-						parameter +
-						"/" +
+						this.config.bucket
+						,
+						dbPrefix
+						,
+						this.config.collection
+						,
+						parameter
+						,
 						value +
 						".json?preventCache=" +
-						new Date().getTime();
+						new Date().getTime()].filter(Boolean).join("/")
 					return fetch(url)
 						.then(res => res.json())
-						.then(json => new S3Obj(config, json))
+						.then(json => new S3Obj(this.config, json))
 				} else {
 					var params = {
-						Bucket: config.bucket,
-						Key: config.collection + "/" + parameter + "/" + value + ".json"
+						Bucket: this.config.bucket,
+						Key:
+							[
+								dbPrefix,
+								this.config.collection,
+								parameter,
+								value + ".json"].filter(Boolean).join("/")
 					};
-					var data = await config.S3.getObject(params).promise()
+					log('params', params)
+					var data = await this.config.S3.getObject(params).promise()
 					var instanceData = JSON.parse(data.Body.toString());
+					console.log("instanceData", instanceData)
 					// TODO: enable ttl support
 					// if (
 					// 	instanceData.ttl === undefined ||
@@ -223,7 +229,7 @@ module.exports = function (bucket, AWS) {
 					// 	// }
 					// 	return new S3Obj(config, instanceData)
 					// }
-					return new S3Obj(config, instanceData)
+					return new S3Obj(this.config, instanceData)
 
 				}
 			}
@@ -231,8 +237,9 @@ module.exports = function (bucket, AWS) {
 			dbHandler.scan = query => {
 				let allFiles = [];
 				return new Promise((resolve, reject) => {
-					let params = { Bucket: config.bucket };
-					let attr = config.hashKey;
+					let params = { Bucket: this.config.bucket };
+					let attr = this.config.hashKey;
+					let paramsPrefixes = []
 					if (query) {
 						if (query.Delimiter) {
 							params.Delimiter = query.Delimiter;
@@ -240,19 +247,25 @@ module.exports = function (bucket, AWS) {
 
 						let key = Object.keys(query)[0];
 						if (typeof query[key] === 'boolean') {
-							params.Prefix = `${config.collection}/${key}/`;
+							paramsPrefixes = [
+								dbPrefix,
+								this.config.collection,
+								`${key}/`];
 						} else {
-							params.Prefix = `${config.collection}/${key}/${query[key]}/`;
+							paramsPrefixes = [dbPrefix,this.config.collection, key, `${query[key]}/`];
 						}
 					} else {
-						params.Prefix = `${config.collection}/${config.hashKey}/`;
+						paramsPrefixes = [dbPrefix, this.config.collection, `${this.config.hashKey}/`]
 					}
 
-					function getFromBucket(ContinuationToken) {
+					params.Prefix = paramsPrefixes.filter(Boolean).join("/")
+
+					log('scan', params)
+					let getFromBucket = (ContinuationToken) => {
 						if (ContinuationToken) {
 							params.ContinuationToken = ContinuationToken;
 						}
-						config.S3.listObjectsV2(params, function (err, data) {
+						this.config.S3.listObjectsV2(params, function (err, data) {
 							if (err) reject({ err: err, stack: err.stack });
 							else {
 								if (data.Contents) {
@@ -296,72 +309,91 @@ module.exports = function (bucket, AWS) {
 				});
 			};
 
-			dbHandler.delete = async (ids) => {
-				if (typeof ids === 'string') {
-					var ids = [ids]
-				}
-				// TODO: completely remove all files from S3
-				if (typeof id === 'string') {
-
-					var object = await dbHandler.get(id)
-					var deleteObjects = []
-
-					for (var key of config.indexes.concat(config.hashKey)) {
-						var deleteParams = {}
-						deleteParams[key] = object[key]
-						deleteObjects.push(deleteParams)
-					}
-
-					dbHandler.deleteRaw(deleteObjects)
-				}
-			}
-
 			dbHandler.deleteRaw = objects => {
 				let _objs = [];
 				objects.forEach(_object => {
 					Object.keys(_object).forEach(_key => {
 						_objs.push({
-							Key: `${config.collection}/${_key}/${_object[_key]}.json`
+							Key: [dbPrefix, this.config.collection, _key, `${_object[_key]}.json`].filter(Boolean).join("/")
 						});
 					});
 				});
 				var params = {
-					Bucket: config.bucket,
+					Bucket: this.config.bucket,
 					Delete: {
 						Objects: _objs,
 						Quiet: false
 					}
 				};
-				return config.S3.deleteObjects(params).promise()
+				console.log("Delete:", JSON.stringify(params, null, 2))
+				return this.config.S3.deleteObjects(params).promise()
 			};
 
-			dbHandler.set = async (newAttributes, extraAttributes) => {
-				if (typeof newAttributes === 'string') {
-					newAttributes = Object.assign(extraAttributes, { id: newAttributes })
+			dbHandler.delete = async (id) => {
+				console.log("DELETE!", id)
+				if (typeof id !== 'object') {
+					try {
+						var object = await dbHandler.get(id)
+
+						console.log("delete got", object)
+
+						var deleteObjects = []
+
+						for (var key of this.config.indexes) {
+							var deleteParams = {}
+							if (object[key]) {
+								console.log("INDEX", key, this.config.schema[key])
+								if (this.config.schema[key] && this.config.schema[key].canRepeat) {
+									deleteParams[key] = `${object[key]}/${object[this.config.hashKey]}`
+								} else {
+									deleteParams[key] = object[key]
+								}
+								deleteObjects.push(deleteParams)
+							}
+						}
+
+						console.log("deleteObjects", deleteObjects)
+
+						dbHandler.deleteRaw(deleteObjects)
+					} catch (err) {
+						console.log("Delete skipped (not found)", err)
+					}
+				}
+			}
+
+			dbHandler.set = async (attribs, extraAttributes) => {
+				let result
+				if (typeof attribs === 'string') {
+					attribs = { id: attribs }
+				}
+				try {
+					result = await dbHandler.get(attribs)
+					result = Object.assign(result, { ...attribs, ...extraAttributes })
+				} catch (err) {
+					result = new S3Obj(this.config, attribs);
 				}
 
-				try {
-					var result = await dbHandler.get(newAttributes[config.hashKey])
-					result = Object.assign(result, newAttributes)
-				} catch (err) {
-					var result = new S3Obj(config, newAttributes);
-				}
+				console.log("SET got:", result)
+
 				await result.save()
 				return result
 			};
 
+			dbHandler.upsert = dbHandler.set
+
 			dbHandler.ls = async (value, opts = {}) => {
 				if (typeof value === "string") {
 					var query = {};
-					query[config.hashKey] = value;
+					query[this.config.hashKey] = value;
 					return await dbHandler.scan(query);
 				}
 
 				if (typeof value === "object") {
 					var key = Object.keys(value)[0]
-					if (config.schema[key]) {
-						if (config.schema[key].composed && typeof value[key] !== 'boolean') {
-							var composed = config.schema[key].composed
+					if (this.config.schema[key]) {
+						if (this.config.schema[key].composed && typeof value[key] !== 'boolean') {
+							console.log('COMPOSED')
+							var composed = this.config.schema[key].composed
 							var query = {}
 							query[key] = composed.map((attr) => {
 								return value[key][attr]
@@ -382,13 +414,22 @@ module.exports = function (bucket, AWS) {
 							}
 						}
 
-
 						var query = {};
 						query = { [key]: value[key] }
 
-						if (config.schema[key].canRepeat) {
+						console.log('ls query', query)
+
+						if ((this.config.schema[key].canRepeat || typeof value[key] === 'boolean')) {
+							console.log("🟢")
 							query.Delimiter = '/'
 							var queries = await dbHandler.scan(query);
+
+							console.log("scanned", queries)
+
+							if (opts.fetchAll) {
+								return await Promise.all(queries.map(dbHandler.get))
+							}
+
 							return queries
 						}
 
@@ -404,19 +445,42 @@ module.exports = function (bucket, AWS) {
 			};
 
 			dbHandler.get = async value => {
-
+				if (typeof value === "number") {
+					value = { [this.config.hashKey]: value.toString() }
+				}
 				if (typeof value === "string") {
-					var query = { [config.hashKey]: value };
-					return await dbHandler.fetch(query);
+					value = { [this.config.hashKey]: value }
 				}
 
-				var queries = await dbHandler.ls(value, { fetchAll: true })
-				return await Promise.all(queries.map(dbHandler.fetch));
+				console.log("get", value)
+				let got = await dbHandler.fetch(value);
+				console.log("got", got)
+				return got
+				// var queries = await dbHandler.ls(value, { fetchAll: true })
+				// return await Promise.all(queries.map(dbHandler.fetch));
+			};
+
+			dbHandler.getTree = async value => {
+				if (typeof value === "string") {
+					var query = { [this.config.hashKey]: value };
+					return await dbHandler.getTree(query);
+				}
+
+				var results = await dbHandler.get(value)
+
+				var key = Object.keys(value)[0]
+				if (this.config.schema[key].composed) {
+					var composition = this.config.schema[key].composed
+					console.log('results', results)
+					console.log('composition', composition)
+				} else {
+					return results
+				}
 			};
 
 			return dbHandler;
 		}
 	}
 
-	return DBCreator;
+	return DBFactory;
 };
